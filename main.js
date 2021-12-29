@@ -27,9 +27,6 @@ function getData() {
                 let pTemperature = document.createElement('p');
                 let pHumidity = document.createElement('p');
                 let pPressure = document.createElement('p');
-                pTemperature.classList.add('lead');
-                pHumidity.classList.add('lead');
-                pPressure.classList.add('lead');
                 pTemperature.classList.add('m-0');
                 pHumidity.classList.add('m-0');
                 pPressure.classList.add('m-0');
