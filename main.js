@@ -1,4 +1,5 @@
 
+
 function getData() {
     // Got data from source
     fetch('https://danepubliczne.imgw.pl/api/data/synop')
@@ -30,10 +31,25 @@ function getData() {
                 pTemperature.classList.add('m-0');
                 pHumidity.classList.add('m-0');
                 pPressure.classList.add('m-0');
-                // Adding content to paragrapsh
-                pTemperature.innerHTML = `Temperatura: <span class='bolded'>${data[i].temperatura}°C</span>`;
-                pHumidity.innerHTML = `Wilgotność względna: <span class='bolded'>${data[i].wilgotnosc_wzgledna}%</span>`;
-                pPressure.innerHTML = `Ciśnienie: <span class='bolded'>${data[i].cisnienie} hPa</span>`;
+
+                // Display specific text if there's no data in given data set and display data if there's info in data set
+                if(data[i].cisnienie === null) {
+                    pPressure.innerHTML = `Ciśnienie: <span class='bolded'>brak danych</span>`;
+                } else {
+                    pPressure.innerHTML = `Ciśnienie: <span class='bolded'>${data[i].cisnienie} hPa</span>`;
+                };
+
+                if (data[i].temperatura === null) {
+                    pTemperature.innerHTML = `Temperatura: <span class='bolded'>brak danych</span>`;
+                } else {
+                    pTemperature.innerHTML = `Temperatura: <span class='bolded'>${data[i].temperatura}°C</span>`;
+                };
+
+                if (data[i].wilgotnosc_wzgledna === null) {
+                    pHumidity.innerHTML = `Wilgotność względna: <span class='bolded'>brak danych</span>`;
+                } else {
+                    pHumidity.innerHTML = `Wilgotność względna: <span class='bolded'>${data[i].wilgotnosc_wzgledna}%</span>`;
+                };
 
                 column.appendChild(header);
                 column.appendChild(pTemperature);
@@ -41,7 +57,7 @@ function getData() {
                 column.appendChild(pPressure);
 
                 row.appendChild(column);
-            }
+            };
         });
         
 };
